@@ -38,17 +38,20 @@ func _physics_process(delta):
 		$AnimatedSprite2D.flip_h = true
 
 	# Vérifie collision avec "spike"
-	for i in range(get_slide_collision_count()):
-		var collision = get_slide_collision(i)
-		if collision.get_collider().name == "spike":
-			etat_courant = Etat.DEATH		
+	# for i in range(get_slide_collision_count()):
+		# var collision = get_slide_collision(i)
+		# if collision.get_collider().name == "spike":
+			# etat_courant = Etat.DEATH		d
 			# dying()
 	
 	# Handle jump.
 	
 	if Input.is_action_just_pressed("sauter") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-		$AudioStreamPlayer2D.play()
+		$AudioStreamPlayer2Djump.play()
+		
+
+
 		
 
 	# Get the input direction and handle the movement/deceleration.

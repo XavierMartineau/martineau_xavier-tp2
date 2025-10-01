@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -500.0
-const glisser_mur_mod = 0.15
 
 @export var etat_courant = Etat.REPOS
 
@@ -12,22 +11,15 @@ enum Etat {
 	REPOS,
 	PROMENER,
 	SAUT,
-	GLISSE_MUR
+	DEATH
 }
 
-
-func _physics_process(delta: float) -> void:
-	# Add the gravity.
+func _physics_process(delta):
 	if not is_on_floor():
 		if is_on_wall() and velocity.y > 0:
-			etat_courant = Etat.GLISSE_MUR
-			velocity += get_gravity() * delta * glisser_mur_mod
-			$AnimatedSprite2D.play("glisser_mur")
-			if Input.is_action_just_pressed("sauter"):
-				#Pour déclencer le son quand on saute depuis le mur
-				$AudioStreamPlayer2D.play()
-				velocity.y = JUMP_VELOCITY
-				velocity.x = move_toward(velocity.x, 0, sign(velocity.x) * SPEED)
+			etat_courant = Etat.SAUT
+			velocity += get_gravity() * delta
+			$AnimatedSprite2D.play("sauter")
 		else:
 			etat_courant = Etat.SAUT
 			velocity += get_gravity() * delta
@@ -44,6 +36,13 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.flip_h = false
 	if velocity.x < 0:
 		$AnimatedSprite2D.flip_h = true
+
+	# Vérifie collision avec "spike"
+	for i in range(get_slide_collision_count()):
+		var collision = get_slide_collision(i)
+		if collision.get_collider().name == "spike":
+			etat_courant = Etat.DEATH		
+			# dying()
 	
 	# Handle jump.
 	

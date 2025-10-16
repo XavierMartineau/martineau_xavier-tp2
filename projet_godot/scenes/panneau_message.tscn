@@ -20,7 +20,7 @@ shape = SubResource("RectangleShape2D_efcy8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -32)
+position = Vector2(0, -11.9)
 texture = SubResource("AtlasTexture_kd50q")
 
 [node name="Message" type="Node2D" parent="."]

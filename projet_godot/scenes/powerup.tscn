@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://cdetpe22k48gg" path="res://assets/audio/powerup.wav" id="3_406cw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_efcy8"]
-size = Vector2(48, 51)
+size = Vector2(58, 51)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kd50q"]
 atlas = ExtResource("2_406cw")
@@ -16,12 +16,10 @@ filter_clip = true
 script = ExtResource("1_406cw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -29.5)
 shape = SubResource("RectangleShape2D_efcy8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -32)
 texture = SubResource("AtlasTexture_kd50q")
 region_rect = Rect2(0, 0, 1152, 1152)
 

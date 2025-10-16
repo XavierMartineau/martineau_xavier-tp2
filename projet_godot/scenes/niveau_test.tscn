@@ -1,10 +1,9 @@
-[gd_scene load_steps=15 format=4 uid="uid://df4o6yn6uk8hi"]
+[gd_scene load_steps=14 format=4 uid="uid://df4o6yn6uk8hi"]
 
 [ext_resource type="TileSet" uid="uid://cwqycux5h0q2u" path="res://assets/spritesheets/paysage_tile_set.tres" id="1_lbg1e"]
 [ext_resource type="PackedScene" uid="uid://dirydc1jhbrdb" path="res://scenes/joueur.tscn" id="2_ktk5d"]
 [ext_resource type="PackedScene" uid="uid://de82iea1y2ek7" path="res://scenes/panneau_message.tscn" id="3_ruoco"]
 [ext_resource type="Script" uid="uid://cnf4o5qr4x1by" path="res://scripts/controle_camera.gd" id="4_5hoti"]
-[ext_resource type="PackedScene" uid="uid://dklftmfk5csx5" path="res://scenes/ascenseur.tscn" id="5_tiqbr"]
 [ext_resource type="Texture2D" uid="uid://c58umbbvl567u" path="res://assets/sprites/terrain_grass_block_left.png" id="6_7e15m"]
 [ext_resource type="Texture2D" uid="uid://bpqpitbbpsgoi" path="res://assets/sprites/terrain_grass_block_right.png" id="7_danug"]
 [ext_resource type="Texture2D" uid="uid://bd785rnaxi1am" path="res://assets/sprites/terrain_grass_block_top_left.png" id="8_rewv3"]
@@ -19,15 +18,10 @@ size = Vector2(128, 189)
 
 [node name="NiveauTest" type="Node"]
 
-[node name="Ascenseur" parent="." instance=ExtResource("5_tiqbr")]
-position = Vector2(947, 550)
-range_y = 448
-duration = 6
-
 [node name="BlocsStatiques" type="Node2D" parent="."]
 
 [node name="BlocStatique" type="StaticBody2D" parent="BlocsStatiques"]
-position = Vector2(772, 127)
+position = Vector2(772, 95)
 metadata/_edit_group_ = true
 
 [node name="TerrainGrassBlockLeft" type="Sprite2D" parent="BlocsStatiques/BlocStatique"]
@@ -58,42 +52,41 @@ texture = ExtResource("11_eph2o")
 shape = SubResource("RectangleShape2D_vlrp8")
 
 [node name="PlancherTileMapLayer" type="TileMapLayer" parent="."]
-position = Vector2(1, 0)
-tile_map_data = PackedByteArray("AAAAAAIAAAABAAMAAAABAAIAAAABAAIAAAACAAIAAAABAAIAAAADAAIAAAAAAA0AAGAEAAEAAAABAAIAAAAFAAEAAAABAAIAAAAIAAAAAAACAAEAAAAIAAEAAAACAAEAAAADAAYAAAABAAIAAAACAAYAAAABAAIAAAABAAYAAAABAAMAAAD//wIAAAACAAIAAAD//wEAAAACAAIAAAD//wAAAAACAAIAAAD//wMAAAACAAIAAAD//wQAAAACAAMAAAD+/wUAAAACAAIAAAD+/wYAAAACAAIAAAD+/wcAAAACAAIAAAD+/wgAAAACAAIAAAD+/wkAAAACAAMAAAD+/wAAAAACAAIAAAD+/wEAAAACAAIAAAD+/wIAAAACAAIAAAD+/wMAAAACAAIAAAD+/wQAAAACAAMAAADt/w0AAAAKAAgAAAAIAAIAAAACAAMAAAAHAAUAAAAAAAoAAAAHAAYAAAAAAAoAAAAGAAYAAAAAAAoAAAAIAAUAAAAAAAoAAAAIAAQAAAAAAAoAAAAIAAMAAAAAAAoAAAAIAAYAAAAAAAoAAAADAAEAAAAAAAwAAGAEAAYAAAABAAIAAAAFAAYAAAABAAIAAAAGAAUAAAABAAAAABAHAAQAAAABAAAAABAGAAEAAAACAAIAAAAGAAIAAAACAAIAAAAGAAMAAAACAAIAAAAGAAQAAAACAAIAAAAHAAMAAAACAAIAAAAHAAIAAAACAAIAAAAHAAEAAAACAAIAAAAFAAIAAAACAAIAAAAFAAMAAAACAAIAAAAFAAQAAAACAAIAAAAFAAUAAAACAAIAAAAEAAUAAAACAAIAAAAEAAQAAAACAAIAAAAEAAMAAAACAAIAAAAEAAIAAAACAAIAAAADAAMAAAACAAIAAAADAAQAAAACAAIAAAADAAUAAAACAAIAAAACAAUAAAACAAIAAAABAAUAAAACAAIAAAABAAQAAAACAAIAAAABAAMAAAACAAIAAAACAAMAAAACAAIAAAACAAQAAAACAAIAAAAAAAMAAAACAAIAAAAAAAQAAAACAAIAAAAAAAUAAAACAAIAAAD//wUAAAACAAIAAAA=")
+tile_map_data = PackedByteArray("AAAAAAEAAAABAAIAAAD//wIAAAABAAIAAAD//wEAAAABAAIAAAD//wAAAAABAAIAAAD///7/AAAAAAoAAAD/////AAABAAIAAAABAAIAAAABAAIAAAACAAIAAAABAAIAAAADAAIAAAABAAIAAAAEAAQAAAABAAIAAAAFAAMAAAABAAIAAAADAAUAAAABAAIAAAACAAYAAAABAAIAAAAAAAgAAAABAAIAAAABAAgAAAABAAIAAAACAAgAAAABAAIAAAADAAgAAAABAAIAAAAEAAgAAAABAAIAAAAFAAgAAAABAAIAAAAGAAgAAAABAAIAAAAHAAoAAAABAAIAAAAGAAkAAAABAAIAAAAIAAoAAAABAAIAAAAJAAoAAAABAAIAAAAHAAYAAAABAAIAAAAIAAUAAAABAAIAAAAFAAYAAAABAAIAAAAKAAkAAAABAAIAAAAJAAcAAAABAAIAAAAAAAIAAAABAAIAAAAAAAcAAAABAAIAAAAAAAYAAAABAAIAAAAAAAUAAAABAAIAAAAAAAQAAAABAAIAAAAAAAMAAAABAAIAAAD//wMAAAABAAIAAAD//wQAAAABAAIAAAD//wUAAAABAAIAAAD//wYAAAABAAIAAAD//wcAAAABAAIAAAD//wgAAAABAAIAAAAEAAUAAAABAAIAAAAEAAYAAAABAAIAAAADAAYAAAABAAIAAAAIAAcAAAABAAIAAAAIAAYAAAABAAIAAAAGAAAAAAABAAIAAAAGAAEAAAABAAIAAAAGAAIAAAABAAIAAAAGAAMAAAABAAIAAAAGAP//AAABAAIAAAAFAP//AAABAAIAAAAEAP//AAABAAIAAAADAP//AAABAAIAAAACAP//AAABAAIAAAABAP//AAABAAIAAAAAAP//AAABAAIAAAABAAMAAAABAAIAAAACAAMAAAABAAIAAAABAAQAAAABAAIAAAD+/wgAAAABAAIAAAD+/wcAAAABAAIAAAD+/wYAAAABAAIAAAD+/wUAAAABAAIAAAD+/wQAAAABAAIAAAD+/wMAAAABAAIAAAD+/wIAAAABAAIAAAD+/wEAAAABAAIAAAD+/wAAAAABAAIAAAAHAAEAAAABAAIAAAAJAAQAAAABAAIAAAAKAAIAAAABAAIAAAALAAkAAAABAAUAAAAMAAkAAAABAAUAAAANAAkAAAABAAUAAAAOAAkAAAABAAUAAAAPAAkAAAABAAUAAAAQAAgAAAABAAUAAAARAAcAAAABAAUAAAASAAcAAAABAAUAAAATAAYAAAABAAUAAAAUAAUAAAABAAUAAAAVAAQAAAABAAUAAAAWAAMAAAABAAUAAAAXAAIAAAABAAUAAAAYAAEAAAAAAAoAAAAYAAIAAAAAAAoAAAAYAAMAAAAAAAoAAAAYAAQAAAAAAAoAAAAYAAUAAAAAAAoAAAAYAAYAAAAAAAoAAAAYAAcAAAAAAAoAAAAYAAgAAAAAAAoAAAAZAAIAAAAAAAoAAAAZAAEAAAAAAAoAAAAZAAAAAAAAAAoAAAAZAP//AAAAAAoAAAAYAP//AAAAAAoAAAAXAP//AAAAAAoAAAAWAP//AAAAAAoAAAAVAP//AAAAAAoAAAAUAAAAAAAAAAoAAAATAAAAAAAAAAoAAAASAAAAAAAAAAoAAAARAAAAAAAAAAoAAAAQAAAAAAAAAAoAAAAPAAAAAAAAAAoAAAAOAAAAAAAAAAoAAAAOAP//AAAAAAoAAAANAP//AAAAAAoAAAAPAP//AAAAAAoAAAAQAP//AAAAAAoAAAARAP//AAAAAAoAAAASAP//AAAAAAoAAAATAP//AAAAAAoAAAAUAP//AAAAAAoAAAAMAP//AAAAAAoAAAALAP//AAAAAAoAAAAKAP//AAAAAAoAAAAJAP//AAAAAAoAAAAIAP//AAAAAAoAAAAHAP//AAAAAAoAAAAHAAAAAAAAAAoAAAAIAAAAAAAAAAoAAAAJAAAAAAAAAAoAAAAKAAAAAAAAAAoAAAALAAAAAAAAAAoAAAAMAAAAAAAAAAoAAAANAAAAAAAAAAoAAAAVAAAAAAAAAAoAAAAWAAAAAAAAAAoAAAAXAAAAAAAAAAoAAAAYAAAAAAAAAAoAAAA=")
 tile_set = ExtResource("1_lbg1e")
 
 [node name="group_powerup" type="Node2D" parent="."]
-visible = false
-position = Vector2(205, 119)
+position = Vector2(207.59, 119)
 
 [node name="powerup2" parent="group_powerup" instance=ExtResource("13_rewv3")]
-position = Vector2(1196, 244)
+position = Vector2(314.41, 168)
+collision_layer = 3
+collision_mask = 3
 
 [node name="powerup" parent="group_powerup" instance=ExtResource("13_rewv3")]
-position = Vector2(265, 577)
+position = Vector2(1135.41, 97)
 
 [node name="groupe_panneau" type="Node2D" parent="."]
-visible = false
 
 [node name="PanneauMessage" parent="groupe_panneau" groups=["panneaux"] instance=ExtResource("3_ruoco")]
-position = Vector2(544, 256)
-message = "Vive les tutoriels."
+position = Vector2(355, 350)
+message = "Je suis un panneau"
 
 [node name="PanneauMessage2" parent="groupe_panneau" groups=["panneaux"] instance=ExtResource("3_ruoco")]
-position = Vector2(1192, 640)
+position = Vector2(1431, 160)
 message = "Exploration!"
 
 [node name="group-audio-positionnel" type="Node2D" parent="."]
-visible = false
 position = Vector2(808, 605)
 
 [node name="Audio-sprite" parent="group-audio-positionnel" instance=ExtResource("14_duk5p")]
+position = Vector2(229, -126)
 
 [node name="Audio-sprite2" parent="group-audio-positionnel" instance=ExtResource("14_duk5p")]
-position = Vector2(-334, -382)
+position = Vector2(-582, -318)
 
 [node name="Joueur" parent="." instance=ExtResource("2_ktk5d")]
-position = Vector2(42, 106)
+position = Vector2(19, 79)
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Joueur"]

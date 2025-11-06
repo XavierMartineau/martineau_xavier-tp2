@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Joueur
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -500.0
@@ -62,3 +63,17 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+
+signal key_collected(key_name)
+
+# Cet dictionnaire peut-être placer sur un 
+# objet autoload Main ou GameState
+var inventory := {}
+
+func collect_key(key_name: String) -> void:
+	inventory[key_name] = true
+	key_collected.emit(key_name)
+
+func has_key(key_name: String) -> bool:
+	return inventory.get(key_name, false)
